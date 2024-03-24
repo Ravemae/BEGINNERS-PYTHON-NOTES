@@ -1,0 +1,36 @@
+from tkinter import *
+
+def delete_text():
+    text = entry.delete()
+    textb = listbox.get("1.0", END)
+    label.config(text=text)
+
+delete_button = Button(text = "Delete", command= delete_text)
+delete_button.pack()
+
+
+def add_task():
+    task = entry.get()
+    listbox.insert(END, task)
+    entry.delete(0,END)
+
+app = Tk()
+app.title("to do list")
+app.config(width= 300, height= 300, padx = 10, pady= 10)
+
+label = Label(text="TO DO LIST", font=("Arial", 30, "bold"))
+label.pack()
+
+entry = Entry()
+entry.pack()
+
+add_button = Button(text="add", command = add_task)
+add_button.pack()
+
+listbox = Listbox()
+
+
+listbox.pack()
+delete_button.pack()
+
+app.mainloop()
